@@ -39,7 +39,7 @@ public:
     /// @param str 
     void insert(std::string str);
 
-    /// @brief Ищет слова в дереве и записывает из в массив trie->words
+    /// @brief Ищет слова в дереве и записывает их в массив trie->words
     /// @param root Корень дерева
     /// @param ind Индекс
     /// @param key Ключевое слово
