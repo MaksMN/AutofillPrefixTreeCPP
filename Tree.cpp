@@ -1,19 +1,19 @@
-#include "Trie.h"
+#include "Tree.h"
 
-Trie::Trie()
+Tree::Tree()
 {
     Root = getNewNode();
 }
 
-Trie::~Trie()
+Tree::~Tree()
 {
     erase(Root);
 }
 
-Node *Trie::getNewNode()
+Node* Tree::getNewNode()
 {
     // Выделяем память по новый узел
-    struct Node *pNode = new Node;
+    struct Node* pNode = new Node;
     pNode->freq = 0;
     // устанавливаем флаг конца слова в false
     pNode->isEndOfWord = false;
@@ -24,9 +24,9 @@ Node *Trie::getNewNode()
     return pNode;
 }
 
-void Trie::insert(std::string key)
+void Tree::insert(std::string key)
 {
-    Node *node = Root;
+    Node* node = Root;
 
     for (int i = 0; i < key.length(); i++)
     {
@@ -46,7 +46,7 @@ void Trie::insert(std::string key)
     node->isEndOfWord = true;
 }
 
-void Trie::findWords(Node *root, int ind, std::string &key, int max, bool unique)
+void Tree::findWords(Node* root, int ind, std::string& key, int max, bool unique)
 {
 
     if (root == nullptr)
@@ -76,7 +76,7 @@ void Trie::findWords(Node *root, int ind, std::string &key, int max, bool unique
     }
 }
 
-bool Trie::compare(char ch[], std::string &key)
+bool Tree::compare(char ch[], std::string& key)
 {
     if (key == std::string())
     {
@@ -84,7 +84,7 @@ bool Trie::compare(char ch[], std::string &key)
     }
     if (key.length() > BUF_SIZE)
         return false;
-    for (int i{0}; i < key.length(); i++)
+    for (int i{ 0 }; i < key.length(); i++)
     {
         if (key[i] != ch[i])
             return false;
@@ -92,16 +92,16 @@ bool Trie::compare(char ch[], std::string &key)
     return true;
 }
 
-void Trie::clear()
+void Tree::clear()
 {
     words.erase();
-    for (int i{0}; i < BUF_SIZE; i++)
+    for (int i{ 0 }; i < BUF_SIZE; i++)
     {
         buf[i] = '\0';
     }
 }
 
-void Trie::erase(Node *root)
+void Tree::erase(Node* root)
 {
     for (int i = 0; i < ALPHABET_SIZE; i++)
     {

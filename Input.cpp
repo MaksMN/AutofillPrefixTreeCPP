@@ -1,8 +1,8 @@
 #include "Input.h"
 
-Input::Input(Trie *trie)
+Input::Input(Tree* tree)
 {
-    _trie = trie;
+    _tree = tree;
 }
 
 void Input::Run(Outputs action)
@@ -28,9 +28,9 @@ Outputs Input::addDictionary()
         if (wrong)
             std::cout << wrong_msg << std::endl;
         wrong = false;
-        _trie->clear();
-        _trie->findWords(_trie->Root, 0, _s, 20);
-        _trie->words.listValues("Keywords in the dictionary: ", false);
+        _tree->clear();
+        _tree->findWords(_tree->Root, 0, _s, 20);
+        _tree->words.listValues("Keywords in the dictionary: ", false);
         std::cout << message;
         std::cin >> word;
         while (std::cin.get() != '\n')
@@ -50,7 +50,7 @@ Outputs Input::addDictionary()
             continue;
         }
 
-        for (int i{0}; i < word.length(); i++)
+        for (int i{ 0 }; i < word.length(); i++)
         {
             if (word[i] < 97 || word[i] > 122)
             {
@@ -61,7 +61,7 @@ Outputs Input::addDictionary()
         if (wrong)
             continue;
 
-        _trie->insert(word);
+        _tree->insert(word);
         std::cout << std::endl;
 
     } while (true);
@@ -82,9 +82,9 @@ Outputs Input::enterWord()
         if (wrong)
             std::cout << wrong_msg << std::endl;
         wrong = false;
-        _trie->clear();
-        _trie->findWords(_trie->Root, 0, _s, 20);
-        _trie->words.listValues("Keywords in the dictionary: ", false);
+        _tree->clear();
+        _tree->findWords(_tree->Root, 0, _s, 20);
+        _tree->words.listValues("Keywords in the dictionary: ", false);
         std::cout << message;
         std::cin >> word;
         while (std::cin.get() != '\n')
@@ -104,7 +104,7 @@ Outputs Input::enterWord()
             continue;
         }
 
-        for (int i{0}; i < word.length(); i++)
+        for (int i{ 0 }; i < word.length(); i++)
         {
             if (word[i] < 97 || word[i] > 122)
             {
@@ -114,9 +114,9 @@ Outputs Input::enterWord()
         }
         if (wrong)
             continue;
-        _trie->clear();
-        _trie->findWords(_trie->Root, 0, word, 20);
-        _trie->words.listValues("Keywords for autocomplete: ", false);
+        _tree->clear();
+        _tree->findWords(_tree->Root, 0, word, 20);
+        _tree->words.listValues("Keywords for autocomplete: ", false);
         std::cout << std::endl;
     } while (true);
 

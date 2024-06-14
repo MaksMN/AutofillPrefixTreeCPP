@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "Trie.h"
+#include "Tree.h"
 enum Outputs
 {
     enter_word,
@@ -14,11 +14,11 @@ class Input
 private:
     std::string word;
     std::string key;
-    Trie *_trie;
+    Tree* _tree;
 
 public:
     Input() = default;
-    Input(Trie *trie);
+    Input(Tree* tree);
     ~Input() = default;
 
     void Run(Outputs action = enter_word);

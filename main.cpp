@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
-#include "Trie.h"
+#include "Tree.h"
 #include "Input.h"
 
-int main(int argc, const char *argv[])
+int main(int argc, const char* argv[])
 {
-    Trie t;
+    Tree t;
 
     t.insert("dog");
     t.insert("doctor");
